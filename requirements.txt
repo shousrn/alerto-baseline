@@ -1,0 +1,32 @@
+# =============================================================================
+# ALERTO Baseline — Python Dependencies
+# Install: py -m pip install -r requirements.txt
+# =============================================================================
+
+# ── Core computer vision ──────────────────────────────────────────────────────
+opencv-python>=4.9.0.80,<5.0        # Video capture, drawing, solvePnP
+mediapipe>=0.10.14,<0.11            # MediaPipe Tasks API — FaceLandmarker
+
+# ── Scientific computing ──────────────────────────────────────────────────────
+numpy>=1.26.0,<2.0                  # Numerical arrays
+scipy>=1.13.0,<2.0                  # Euclidean distance (features.py)
+
+# ── Machine learning ──────────────────────────────────────────────────────────
+scikit-learn>=1.4.2,<2.0           # SVM, StandardScaler, metrics
+
+# ── Data handling ─────────────────────────────────────────────────────────────
+pandas>=2.2.0,<3.0                  # CSV I/O for training data
+
+# ── Plotting ─────────────────────────────────────────────────────────────────
+matplotlib>=3.8.0,<4.0              # Confusion matrix figures (training/evaluation)
+
+# ── Web server ────────────────────────────────────────────────────────────────
+flask>=3.0.0,<4.0                   # Flask backend
+flask-cors>=4.0.0,<5.0              # CORS for React dev server
+
+# ── Audio alert ───────────────────────────────────────────────────────────────
+simpleaudio>=1.0.4,<2.0            # Non-blocking WAV playback in standalone mode
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.2.0,<9.0                  # Unit tests
+pytest-cov>=5.0.0,<6.0             # Coverage reports

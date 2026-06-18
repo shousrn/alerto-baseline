@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ── Base dark palette (always active unless overridden) ────────────────── */
+:root {
+  --c-bg:          #020617; /* slate-950 */
+  --c-bg-2:        #0f172a; /* slate-900 */
+  --c-bg-3:        #1e293b; /* slate-800 */
+  --c-border:      #334155; /* slate-700 */
+  --c-border-dim:  #1e293b; /* slate-800 */
+  --c-text:        #f1f5f9; /* slate-100 */
+  --c-text-mid:    #94a3b8; /* slate-400 */
+  --c-text-dim:    #64748b; /* slate-500 */
+  --c-header-bg:   rgba(2, 6, 23, 0.85);
+}
+
+/* ── Light palette overrides ────────────────────────────────────────────── */
+[data-theme='light'] {
+  --c-bg:          #f1f5f9; /* slate-100 */
+  --c-bg-2:        #ffffff;
+  --c-bg-3:        #e2e8f0; /* slate-200 */
+  --c-border:      #cbd5e1; /* slate-300 */
+  --c-border-dim:  #e2e8f0; /* slate-200 */
+  --c-text:        #0f172a; /* slate-900 */
+  --c-text-mid:    #475569; /* slate-600 */
+  --c-text-dim:    #64748b; /* slate-500 */
+  --c-header-bg:   rgba(241, 245, 249, 0.85);
+}
+
+/* ── Apply palette globally ──────────────────────────────────────────────── */
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ── Theme-aware utility classes ─────────────────────────────────────────── */
+.themed-bg        { background-color: var(--c-bg); }
+.themed-bg-2      { background-color: var(--c-bg-2); }
+.themed-bg-3      { background-color: var(--c-bg-3); }
+.themed-border    { border-color: var(--c-border); }
+.themed-border-dim{ border-color: var(--c-border-dim); }
+.themed-text      { color: var(--c-text); }
+.themed-text-mid  { color: var(--c-text-mid); }
+.themed-text-dim  { color: var(--c-text-dim); }
+.themed-header    { background-color: var(--c-header-bg); }
+
+/* ── Light mode structural overrides ─────────────────────────────────────── */
+/* These target the Tailwind hardcoded classes via cascade */
+[data-theme='light'] .bg-slate-950,
+[data-theme='light'] .bg-slate-950\/80 { background-color: var(--c-bg) !important; }
+[data-theme='light'] .bg-slate-900,
+[data-theme='light'] .bg-slate-900\/50 { background-color: var(--c-bg-2) !important; }
+[data-theme='light'] .bg-slate-800,
+[data-theme='light'] .bg-slate-800\/70 { background-color: var(--c-bg-3) !important; }
+[data-theme='light'] .border-slate-800,
+[data-theme='light'] .border-slate-800\/70 { border-color: var(--c-border) !important; }
+[data-theme='light'] .border-slate-700 { border-color: var(--c-border) !important; }
+[data-theme='light'] .text-slate-50,
+[data-theme='light'] .text-slate-100,
+[data-theme='light'] .text-slate-200,
+[data-theme='light'] .text-white { color: var(--c-text) !important; }
+[data-theme='light'] .text-slate-300,
+[data-theme='light'] .text-slate-400 { color: var(--c-text-mid) !important; }
+[data-theme='light'] .text-slate-500,
+[data-theme='light'] .text-slate-600 { color: var(--c-text-dim) !important; }
+[data-theme='light'] .hover\:bg-slate-900:hover,
+[data-theme='light'] .hover\:bg-slate-800:hover,
+[data-theme='light'] .hover\:bg-slate-700:hover { background-color: var(--c-bg-3) !important; }
+
+/* Keep the video feed / live overlay text dark even in light mode */
+[data-theme='light'] .bg-black\/50 { background-color: rgba(0,0,0,0.45) !important; }
+[data-theme='light'] .text-xs.text-slate-300:not(.keep-dark) { color: #e2e8f0 !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+[data-theme='light'] ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+
+/* Animations */
+@keyframes slide-in-from-right-full {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.animate-in { animation-fill-mode: forwards; }
+.slide-in-from-right-full { animation-name: slide-in-from-right-full; }
+.duration-300 { animation-duration: 300ms; }

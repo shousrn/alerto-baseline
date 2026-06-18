@@ -1,0 +1,2 @@
+# data directory — generated during training (gitignored)
+# Run: py training/generate_data.py  then  py training/train_svm.py

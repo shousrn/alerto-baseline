@@ -1,0 +1,24 @@
+ALERTO BASELINE — SVM TRAINING REPORT
+=================================================================
+Generated  : 2026-06-18 09:00:43
+CSV source : data/extracted_features.csv  (2,400 samples)
+Train/Test : 1,680 / 720 samples
+
+5-fold CV accuracy : 0.8083 ± 0.0128
+
+Hold-Out Test Set Classification Report
+-----------------------------------------------------------------
+              precision    recall  f1-score   support
+
+       ALERT     0.9302    1.0000    0.9639       240
+      DROWSY     0.7951    0.6792    0.7326       240
+  DISTRACTED     0.7665    0.8208    0.7928       240
+
+    accuracy                         0.8333       720
+   macro avg     0.8306    0.8333    0.8297       720
+weighted avg     0.8306    0.8333    0.8297       720
+
+Confusion Matrix (rows=true, cols=predicted):
+[[240   0   0]
+ [ 17 163  60]
+ [  1  42 197]]

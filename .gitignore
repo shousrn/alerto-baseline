@@ -1,0 +1,49 @@
+# =============================================================================
+# ALERTO Baseline — .gitignore
+# =============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Generated training data & trained models
+data/synthetic_train.csv
+data/synthetic_test.csv
+data/svm_baseline_model.pkl
+data/svm_baseline_scaler.pkl
+data/nthu_features.csv
+data/yawdd_features.csv
+
+# Runtime outputs
+outputs/screenshots/
+outputs/logs/
+
+# IDE / OS
+.idea/
+.vscode/
+*.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Jupyter (if any)
+.ipynb_checkpoints/
+
+# Datasets
+dataset/NTHU-DDD/
+dataset/YawDD/
