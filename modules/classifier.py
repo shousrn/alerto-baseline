@@ -1,23 +1,12 @@
 # modules/classifier.py — Phase 3: Classification Engine
 # =============================================================================
-# STUDY REFERENCE:
+# STUDY REFERENCES:
 #   Jabbar, R., et al. (2018). Real-time driver drowsiness detection for
 #   embedded system using model compression of deep neural networks.
 #   Procedia Computer Science, 130, 736–743.
 #
-#   SVM approach also from:
 #   Ghoddoosian, R., Galib, M., & Athitsos, V. (2019). A realistic dataset
 #   and baseline temporal model for early drowsiness detection. CVPR Workshops.
-#
-# WHAT THIS MODULE DOES:
-#   ✓ SVMClassifier  — SVM (RBF kernel) trained on global feature distributions
-#                       Uses global StandardScaler (NOT per-user)
-#   ✓ RuleBasedClassifier — Pure IF-THEN fallback (no ML, no training needed)
-#
-# CRITICAL LIMITATION (by design):
-#   The global StandardScaler is fitted on population-average EAR (~0.330).
-#   Filipino/SE Asian resting EAR (~0.316) is closer to the drowsiness threshold,
-#   producing more false positives. This IS the racial bias the thesis measures.
 # =============================================================================
 
 import os

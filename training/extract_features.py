@@ -140,25 +140,21 @@ def _extract_one(image_path: str, landmarker: vision.FaceLandmarker) -> list | N
 
 def _assign_label(source_dir: str, pitch: float, yaw: float) -> int:
     """
-    Return integer label for a sample:
+    Return integer label for a sample, in priority order:
       1 (DROWSY)      — image is from the 'drowsy/' subdirectory.
-      2 (DISTRACTED)  — image is from 'notdrowsy/'. Pitch > 25° or Yaw > 35°.
-      0 (ALERT)       — image is from 'notdrowsy/'. Pitch < 15° and Yaw < 20°.
-      -1 (SKIP)       — image is in the 'buffer zone' between Alert and Distracted.
+      2 (DISTRACTED)  — image is from 'notdrowsy/' with |pitch| > 25° or |yaw| > 35°.
+      0 (ALERT)       — image is from 'notdrowsy/' with |pitch| < 15° and |yaw| < 20°.
+     -1 (SKIP)        — ambiguous border frame; excluded from the training set.
     """
     if "drowsy" in source_dir.replace("notdrowsy", ""):
         return LABEL_INT["DROWSY"]
-        
-    # notdrowsy path: Create a mathematical gap (buffer zone) between classes
+
     abs_p, abs_y = abs(pitch), abs(yaw)
-    
     if abs_p > 25.0 or abs_y > 35.0:
         return LABEL_INT["DISTRACTED"]
-        
     if abs_p < 15.0 and abs_y < 20.0:
         return LABEL_INT["ALERT"]
-        
-    return -1  # Skip ambiguous border frames
+    return -1
 
 
 # ---------------------------------------------------------------------------
@@ -207,8 +203,6 @@ def main() -> None:
     landmarker = _build_landmarker()
     print("  Landmarker ready.\n")
 
-    # -- Extraction with per-class caps --------------------------------------
-    # Counters: {0: n_alert, 1: n_drowsy, 2: n_distracted}
     counts: dict[int, int] = {0: 0, 1: 0, 2: 0}
     records: list[list] = []
 
@@ -219,7 +213,6 @@ def main() -> None:
     random.shuffle(all_images)
 
     for img_path, src_dir in all_images:
-        # Stop early if all classes are full
         if all(v >= MAX_PER_CLASS for v in counts.values()):
             break
 

@@ -1,0 +1,32 @@
+=================================================================
+  ALERTO BASELINE — Held-Out Test Set Evaluation
+=================================================================
+  Generated       : 2026-06-19 04:38:23
+  Test partition  : 720 samples
+  Overall accuracy: 83.33%
+  Macro Precision : 0.8306
+  Macro Recall    : 0.8333
+  Macro F1-Score  : 0.8297
+  Weighted Prec.  : 0.8306
+  Weighted Recall : 0.8333
+  Weighted F1     : 0.8297
+
+  Per-class metrics:
+-----------------------------------------------------------------
+              precision    recall  f1-score   support
+
+       ALERT     0.9302    1.0000    0.9639       240
+      DROWSY     0.7951    0.6792    0.7326       240
+  DISTRACTED     0.7665    0.8208    0.7928       240
+
+    accuracy                         0.8333       720
+   macro avg     0.8306    0.8333    0.8297       720
+weighted avg     0.8306    0.8333    0.8297       720
+
+  Confusion matrix (rows = true label, columns = predicted label):
+  Labels: [ALERT, DROWSY, DISTRACTED]
+[[240   0   0]
+ [ 17 163  60]
+ [  1  42 197]]
+
+=================================================================

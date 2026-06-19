@@ -41,10 +41,11 @@ MAR_CONSECUTIVE_FRAMES = 30     # Sustained yawn frames → DROWSY alarm
                                  # @ 30 fps: 30 frames ≈ 1.0 second
 
 # ── Head Pose (Spatial Branch — PnP) ──────────────────────────────────────
-PITCH_THRESH_LOW   = -25.0   # symmetric buffer for upward gaze
-PITCH_THRESH_HIGH  =  30.0   # desk downward gaze is naturally 10-25°
-YAW_THRESHOLD      =  35.0   # now matches training boundary exactly
-DISTRACTION_FRAMES =  72     # 72 frames / 48 FPS = 1.5 seconds as designed
+PITCH_THRESH_LOW   = -25.0   # Upward gaze limit
+PITCH_THRESH_HIGH  =  30.0   # Downward gaze limit (seated driver typically 10–25°)
+YAW_THRESHOLD      =  35.0   # Lateral head turn limit
+DISTRACTION_FRAMES =  72     # Sustained off-axis frames → DISTRACTED alarm
+                              # @ ~48 fps: 72 frames ≈ 1.5 seconds
 
 # ── MediaPipe Landmark Indices (classic face_mesh API) ─────────────────────
 # Right eye: p1=outer canthus, p4=inner canthus, p2/p3=upper lid, p5/p6=lower lid
