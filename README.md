@@ -157,17 +157,6 @@ py app.py                      # visit http://localhost:5000
 
 ---
 
-### Developer shortcut — Standalone OpenCV window
-
-`main.py` is a quick-check tool for testing the ML pipeline **without a browser**. It opens a raw OpenCV window with a text HUD. Useful for debugging feature extraction or verifying the camera works — not the demo interface.
-
-```bash
-py main.py                          # SVM mode (default)
-py main.py --mode rule              # Rule-based fallback (no model file needed)
-py main.py --source path/to.mp4    # Process a video file
-```
-
----
 
 ## Project structure
 
